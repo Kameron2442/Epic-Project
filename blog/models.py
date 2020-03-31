@@ -1,3 +1,19 @@
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
+import uuid
 
-# Create your models here.
+class Location(models.Model):
+    l_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    l_name = models.CharField(max_length = 100)
+    x_cord = models.FloatField() 
+    y_cord = models.FloatField() 
+    times_cleaned = models.IntegerField() 
+
+class Cleaned(models.Model):
+    # an id will be auto created https://stackoverflow.com/questions/16800375/how-can-set-two-primary-key-fields-for-my-models-in-django
+    l_id = models.ForeignKey(Location, on_delete = models.CASCADE)
+    u_id = models.ForeignKey(User, on_delete = models.CASCADE)
+    date_cleaned = models.DateTimeField(default = timezone.now)
+    description = models.TextField()
+
