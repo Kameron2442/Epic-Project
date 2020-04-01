@@ -11,10 +11,12 @@
             {% for clean in cleaned %}
             {% ifequal clean.l_id.l_id loc.l_id %}
             
-            <p>{{clean.description}}</p>
+            <p><span class = "cdate">{{clean.date_cleaned|date:"M d Y"}}</span> {{clean.description}} <span class="fadegreen">By: {{clean.u_id.username}}</span></p>
 
             {% endifequal %}
             {% endfor %}
+
+            <p class = "lowercount">Total times cleaned: {{loc.times_cleaned}}</p>
           </div>
         </article>
     {% endfor %}

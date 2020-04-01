@@ -9,6 +9,18 @@ body {
   color: white !important;
 }
 
+.center-wide{
+  margin-top: 20px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body main .cdate{
+  color: #9c3766;
+  font-weight: 700;
+}
+
 .title-blue{
 
   background: #9CCC65;
@@ -23,23 +35,37 @@ body {
   margin-bottom: 20px;
 }
 
+.lowercount{
+  color: #adadad;
+  text-align: right;
+  margin-bottom: 0px;
+}
+
+.fadegreen{
+  color: #729084;
+}
+
 .title-blue h2 {
   color: white;
+  margin-bottom: 0px;
 }
 
 body article{
   box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.7);
   border-radius: 10px !important;
   overflow: hidden;
+  margin-bottom: 25px !important;
 }
 
 .less-padding{
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  
 }
 
 .clr{
   color: #507080;
   font-weight: 500;
+  font-size: 17px;
 }
 
 
