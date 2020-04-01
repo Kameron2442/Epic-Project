@@ -1,24 +1,13 @@
 from django.shortcuts import render
+from .models import Location
+from .models import Cleaned
 
-posts = [
-    {
-        'l-id': '159',
-        'u-id': '158',
-        'date_cleaned': 'August 27, 2018',
-        'description': 'Hello'
-    },
-    {
-        'l-id': '159',
-        'u-id': '158',
-        'date_cleaned': 'August 27, 2018',
-        'description': 'Hell'
-    }
-]
-
+#<if L_id == loc.id{}>
 
 def home(request):
     context = {
-        'posts': posts
+        'locations': Location.objects.all(),
+        'cleaned': Cleaned.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
