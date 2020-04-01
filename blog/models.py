@@ -8,6 +8,7 @@ class Location(models.Model):
     l_name = models.CharField(max_length = 100)
     x_cord = models.FloatField() 
     y_cord = models.FloatField() 
+    description = models.TextField()
     times_cleaned = models.IntegerField() 
 
 class Cleaned(models.Model):
