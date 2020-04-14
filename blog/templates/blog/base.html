@@ -34,7 +34,7 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
             </div>
           </div>
         </div>
@@ -43,6 +43,11 @@
     <main role="main" class="container">
       <div class="row">
         <div class="center-wide">
+          {% if messages %}
+            {% for message in messages %}
+              <div style="text-align: center;font-size: 22px;"> {{message}} </div>
+            {% endfor %}
+          {% endif %}
           {% block content %}{% endblock %}
         </div>
       </div>
