@@ -5,6 +5,9 @@ body {
   margin-bottom: 100px;
 }
 
+.padl{
+  padding-left: 20px !important;
+}
 
 .site-header .navbar-nav .nav-link{
   color: white !important;
