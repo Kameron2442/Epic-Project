@@ -4,7 +4,7 @@
         <article class="media content-section">
           <div class="media-body">
             <div class="title-blue">
-            <h2>{{ loc.l_name }}</h2>
+            <h2><a href="{% url 'post-detail' loc.l_id %}">{{ loc.l_name }}</a></h2>
             <p class="article-content less-padding">{{loc.description}}</p>
             <a class="mr-2 clr" target="_blank" href="https://www.google.com/maps/place/{{loc.x_cord}},{{loc.y_cord}}">Open in Maps X: {{loc.x_cord}} Y: {{loc.y_cord}}</a>
             </div>

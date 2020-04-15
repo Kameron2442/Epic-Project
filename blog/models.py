@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 import uuid
 
 class Location(models.Model):
@@ -10,6 +11,9 @@ class Location(models.Model):
     y_cord = models.FloatField() 
     description = models.TextField()
     times_cleaned = models.IntegerField() 
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs = {'pk':self.pk})
 
 class Cleaned(models.Model):
     # an id will be auto created https://stackoverflow.com/questions/16800375/how-can-set-two-primary-key-fields-for-my-models-in-django

@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="title-blue">
+            <h2>{{ object.l_name }}</h2>
+            <p class="article-content less-padding">{{object.description}}</p>
+            <a class="mr-2 clr" target="_blank" href="https://www.google.com/maps/place/{{loc.x_cord}},{{loc.y_cord}}">Open in Maps X: {{object.x_cord}} Y: {{object.y_cord}}</a>
+            </div>
+
+
+            <p class = "lowercount">Total times cleaned: {{object.times_cleaned}}</p>
+          </div>
+        </article>
+   
+{% endblock content %}
+
+
