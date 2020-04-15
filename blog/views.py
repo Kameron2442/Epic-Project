@@ -15,6 +15,11 @@ def home(request):
 class PostDetailView(DetailView):
     model = Location
 
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context['cleans'] = Cleaned.objects.all()
+        return context
+
 class PostUpdateView(UpdateView):
     model = Location 
     fields = ['l_name', 'x_cord', 'y_cord', 'description', 'times_cleaned']
@@ -43,8 +48,7 @@ def about(request):
 class PostCreateClean(CreateView):
     model = Cleaned 
     fields = ['date_cleaned', 'description']
-    success_url = '/'
-    
+    #success_url = '../'
     def form_valid(self, form):
         form.instance.u_id = self.request.user
         form.instance.l_id = get_object_or_404(Location, l_id=self.kwargs['pk'])

@@ -22,3 +22,5 @@ class Cleaned(models.Model):
     date_cleaned = models.DateTimeField(default = timezone.now)
     description = models.TextField()
 
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs = {'pk': self.l_id.l_id})
