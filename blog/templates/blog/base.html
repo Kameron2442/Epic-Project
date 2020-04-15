@@ -33,7 +33,7 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-              <a class="nav-item nav-link padl" href="#">Post Location</a>
+              <a class="nav-item nav-link padl" href="{%url 'post-create'%}">Post Location</a>
               <a class="nav-item nav-link padl" href="#">Post Cleaned</a>
               <a class="nav-item nav-link padl" href="/logout">Logout</a>
               {% else %}
