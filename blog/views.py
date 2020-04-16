@@ -12,6 +12,25 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
+def about(request):
+
+    allLoc = []
+    for p in Location.objects.raw('SELECT * FROM blog_location'):
+        allLoc.append(p)
+
+    avgCleans = []
+    #for p in Cleaned.objects.raw('SELECT id, l_id_id, COUNT(*) as total FROM blog_cleaned GROUP BY l_id_id'):
+    for p in Cleaned.objects.raw('SELECT id, avg(total) as average from (SELECT id, l_id_id, COUNT(*) as total FROM blog_cleaned GROUP BY l_id_id)'):
+        avgCleans.append(p)
+    print(avgCleans)
+
+    context = {
+        'title': 'About',
+        'allLoc': allLoc,
+        'avgCleans': avgCleans
+    }
+    return render(request, 'blog/about.html', context)
+
 class PostDetailView(DetailView):
     model = Location
 
@@ -42,8 +61,6 @@ class PostDeleteView(DeleteView):
     success_url = '/'
     model = Location
 
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
 
 class PostCreateClean(CreateView):
     model = Cleaned 
