@@ -1,15 +1,28 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1>About Page</h1>
 
-    <p>Average Cleans Per Location</p>
+<style>
+
+    h1{padding-bottom: 30px;}
+
+    .smallt{
+    font-weight: bold;
+    padding-top: 20px;}
+
+    .center-wide{
+        text-align: center;
+    }
+
+</style>
+
+    <h1>Site Stats</h1>
+
+    <p class = "smallt">Average Cleans Per Location</p>
     {% for c in avgCleans %}
     <p>{{c.average}}</p>
     {% endfor %}
 
-    <br>
-    <br>
-    <p>All Locations</p>
+    <p class = "smallt">All Locations</p>
     {% for loc in allLoc %}
     <p>{{loc.l_name}}</p>
     {% endfor %}
