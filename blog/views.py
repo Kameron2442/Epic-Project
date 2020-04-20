@@ -72,7 +72,9 @@ class PostCreateClean(CreateView):
         return super().form_valid(form)
 
 
-
+def server_error(request):
+    context = {}
+    return render(request, 'blog/500.html', context, status=500)
 
 #    l_id = models.ForeignKey(Location, on_delete = models.CASCADE)
 #     u_id = models.ForeignKey(User, on_delete = models.CASCADE)
