@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Location
 from .models import Cleaned
 #from django.urls import reverse
+from django.db import connection
 
 
 def home(request):
@@ -19,15 +20,23 @@ def about(request):
         allLoc.append(p)
 
     avgCleans = []
-    #for p in Cleaned.objects.raw('SELECT id, l_id_id, COUNT(*) as total FROM blog_cleaned GROUP BY l_id_id'):
     for p in Cleaned.objects.raw('SELECT id, avg(total) as average from (SELECT id, l_id_id, COUNT(*) as total FROM blog_cleaned GROUP BY l_id_id)'):
         avgCleans.append(p)
-    print(avgCleans)
+
+    viewLoc = []
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM locandcleans")
+        row = cursor.fetchall()
+        for i in row:
+            print(i)
+            viewLoc.append(i[0] + " was cleaned " + str(i[1]) + " times")
+
 
     context = {
         'title': 'About',
         'allLoc': allLoc,
-        'avgCleans': avgCleans
+        'avgCleans': avgCleans,
+        'viewLoc': viewLoc
     }
     return render(request, 'blog/about.html', context)
 
