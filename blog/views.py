@@ -24,8 +24,9 @@ def about(request):
         avgCleans.append(p)
 
     viewLoc = []
+    myVar = ('2',)
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM locandcleans")
+        cursor.execute("SELECT * FROM locandcleans WHERE times_cleaned > ?", myVar)
         row = cursor.fetchall()
         for i in row:
             print(i)
