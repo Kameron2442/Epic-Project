@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 import uuid
 
+# The model for the Location table
 class Location(models.Model):
     l_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     l_name = models.CharField(max_length = 100)
@@ -15,8 +16,8 @@ class Location(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail', kwargs = {'pk':self.pk})
 
+# The model for the Cleaned table
 class Cleaned(models.Model):
-    # an id will be auto created https://stackoverflow.com/questions/16800375/how-can-set-two-primary-key-fields-for-my-models-in-django
     l_id = models.ForeignKey(Location, on_delete = models.CASCADE)
     u_id = models.ForeignKey(User, on_delete = models.CASCADE)
     date_cleaned = models.DateTimeField(default = timezone.now)
